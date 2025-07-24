@@ -107,4 +107,3 @@ Defines all URL routes using Flask Blueprints.
 | `/profile` | GET | Authenticated | User profile page |
 | `/admin_dashboard` | GET | Admin only | Admin dashboard |
 | `/update/<MetricName>` | GET, POST | Authenticated | Update a specific metric |
-| `/update_user
