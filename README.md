@@ -25,7 +25,7 @@ A secure, fullstack web application built with **Flask** to manage and maintain 
 - **Backend**: Python, Flask  
 - **Authentication**: Flask-Login  
 - **Database**: SQLite (via SQLAlchemy)  
-- **Frontend**: HTML/CSS, Bootstrap
+- **Frontend**: HTML,CSS
 
 ---
 
