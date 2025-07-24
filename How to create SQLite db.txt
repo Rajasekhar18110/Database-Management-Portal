@@ -1,0 +1,26 @@
+How to use SQLite
+
+1. create a folder, open terminal inside that folder
+2. to create database : sqlite3 testDB.db
+3. this will create a database with name testDB
+4. by default this database is hidden in folder, to show it type the command: .databases
+5. this will show the database in the folder
+
+if the database already exist:
+1. go to that folder, open cmd and type: .open testDB.db
+
+To create a table
+CREATE TABLE IF NOT EXISTS events (
+    id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    event_date DATETIME NOT NULL
+);
+
+To insert values:
+INSERT INTO events (id,name, event_date)
+VALUES
+    (1001,'graduation', '2024-01-01 02:38:09'),
+    (1002,'ceremony', '2024-11-18 07:20:10'),
+    (1003,'aluminin meet','2024-07-04 11:16:09')
+;
+
