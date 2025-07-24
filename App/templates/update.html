@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="update-form-container">
+    <h2 class="update-form-heading">Update Metric Details</h2>
+    <form class="update-form" method="POST">
+        <label class="update-form-label" for="metric-name">Metric Name</label>
+        <input class="update-form-input" type="text" id="metric-name" name="metric-name" value="{{row[0]}}" required>
+
+        <label class="update-form-label" for="description">Description</label>
+        <textarea class="update-form-input" id="description" name="description" rows="5" required>{{row[1]}}</textarea>
+
+        <label class="update-form-label" for="data-type">Data Type</label>
+        <input class="update-form-input" type="text" id="data-type" name="data-type" value="{{row[2]}}" required>
+
+        <label class="update-form-label" for="edit-date">Last Edit Date</label>
+        <input class="update-form-input" type="text" id="edit-date" name="edit-date" value="{{row[3]}}" readonly>
+
+        <label class="update-form-label" for="dri">DRI</label>
+        <input class="update-form-input" type="text" id="dri" name="dri" value="{{row[4]}}" >
+
+        <label class="update-form-label" for="signal-source">Signal Source</label>
+        <input class="update-form-input" type="text" id="signal-source" name="signal-source" value="{{row[5]}}" >
+
+        <label class="update-form-label" for="linked-icms">LinkedIcMs</label>
+        <input class="update-form-input" type="text" id="linked-icms" name="linked-icms" value="{{row[6]}}" >
+
+        <label class="update-form-label" for="linked-research">Linked Research</label>
+        <input class="update-form-input" type="text" id="linked-research" name="linked-research" value="{{row[7]}}" >
+
+        <label class="update-form-label" for="linked-specs">Linked Specs</label>
+        <input class="update-form-input" type="text" id="linked-specs" name="linked-specs" value="{{row[8]}}" >
+
+        <label class="update-form-label" for="edit-user">Last Edit User</label>
+        <input class="update-form-input" type="text" id="edit-user" name="edit-user" value="{{row[9]}}" readonly>
+
+        <button class="update-form-button" type="submit">Update</button>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>flask app</title>
+   
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('main.dashboard') }}" class="navbar-brand">Viva assist</a>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('main.dashboard') }}" class="navbar-link">Dashboard</a></li>
+                <li><a href="{{ url_for('main.Show_allrows') }}" class="navbar-link">Show All</a></li>
+                {% if current_user.isAdmin == "yes" %}
+                    <li>
+                        <a href="{{ url_for('main.admin_dashboard') }}" class="navbar-link">Admin_Dashboard</a> 
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.log_history') }}" class="navbar-link">Log_History</a> 
+                    </li>
+                {% endif %}
+                <li><a href="{{ url_for('main.profile') }}" class="navbar-link">Profile</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <script>
+                {% for category, message in messages %}
+                    if ("{{ category }}" === "session_expired") {
+                        alert("{{ message }}");
+                    }
+                    else if ("{{ category }}" === "success") {
+                        alert("✅ {{ message }}"); // Add success emoji or icon
+                    } else if ("{{ category }}" === "danger") {
+                        alert("❌ {{ message }}"); // Add error emoji or icon
+                    } else {
+                        alert("{{ message }}"); // Default
+                    }
+                {% endfor %}
+            </script>
+        
+        {% endif %}
+    {% endwith %}
+    
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

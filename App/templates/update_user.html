@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="update-form-container">
+    <h2 class="update-form-heading">Update User Permissions</h2>
+    <form class="update-form" method="POST">
+        <label class="update-form-label" for="username">username</label>
+        <input class="update-form-input" type="text" id="username" name="username" value="{{row[0]}}" readonly>
+
+        <label class="update-form-label" for="email">email</label>
+        <input class="update-form-input" type="text" id="email" name="email" value="{{row[1]}}" readonly>
+
+        <label class="update-form-label" for="isActive">IsActive:</label>
+        <select class="update-form-input" name="isActive" id="isActive">
+            {% if row[2] == "yes" %}
+                <option value="yes" selected>Yes</option>
+                <option value="no">No</option>
+            {% else %}
+                <option value="yes">Yes</option>
+                <option value="no" selected>No</option>
+            {% endif %}
+        </select>
+
+        <label class="update-form-label" for="isAdmin">IsAdmin:</label>
+        <select class="update-form-input" name="isAdmin" id="isAdmin">
+            {% if row[3] == "yes" %}
+                <option value="yes" selected>Yes</option>
+                <option value="no">No</option>
+            {% else %}
+                <option value="yes">Yes</option>
+                <option value="no" selected>No</option>
+            {% endif %}
+        </select>
+        <br>
+
+        <button class="update-form-button" type="submit">Update</button>
+    </form>
+</div>
+
+
+{% endblock %}

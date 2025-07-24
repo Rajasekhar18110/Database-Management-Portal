@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<table>
+    <caption>Metrics Table Edit History
+    <div class="dropdown-container">
+        <div class="dropdown-group">
+            <label class="dropdown-label" for="dropdown-1">Metric name:</label>
+            <select class="dropdown" id="dropdown-1">
+                <option>all</option>
+                {% for m in MetricNameFilter %}
+                    <option>{{m[0]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="dropdown-group">
+            <label class="dropdown-label" for="dropdown-2">Data type:</label>
+            <select class="dropdown" id="dropdown-2">
+                <option>all</option>
+                {% for d in DataTypeFilter %}
+                    <option>{{d[0]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="dropdown-group">
+            <label class="dropdown-label" for="dropdown-3">Edit user:</label>
+            <select class="dropdown" id="dropdown-3">
+                <option>all</option>
+                {% for u in EditUserFilter %}
+                    <option>{{u[0]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+</caption>
+    
+    
+    <thead>
+        <tr>
+            {% for name in column_names %}
+                <th {% if loop.index == 1 %} style="width: 80px;" {% endif %}
+                    {% if loop.index == 2 %} style="width: 300px;" {% endif %}
+                >
+                    {{ name }}
+                </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        {% for r in rows %}
+            <tr>
+                {% for field in r %}
+                    <!-- setting the second column wide , because it has description -->
+                    <td {% if loop.index == 1 %} style="width: 80px;" {% endif %}
+                        {% if loop.index == 2 %} style="width: 300px;" {% endif %}
+                    >
+                        {{ field }}
+                    </td>
+                
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+
+<script src="../static/filterLogic.js"></script>
+
+
+{% endblock %}

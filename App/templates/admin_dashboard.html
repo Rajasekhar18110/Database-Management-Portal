@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <caption>User Table</caption>
+    <thead>
+        <tr>
+            {% for name in column_names %}
+                <th>
+                    {{ name }}
+                </th>
+            {% endfor %}
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+            <tr>
+                {% for field in u %}
+                    
+                    <td>
+                        {{ field }}
+                    </td>
+                
+                {% endfor %}
+                <td>
+                    <a class="editlink" onclick="location.href='{{ url_for('main.update_user', email=u[1]) }}'" style="cursor: pointer;">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+
+
+
+
+{% endblock %}

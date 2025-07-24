@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <caption>User Log History Table</caption>
+    <thead>
+        <tr>
+            {% for name in column_names %}
+                <th>
+                    {{ name }}
+                </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in user_log_history %}
+            <tr>
+                {% for field in u %}
+                    
+                    <td>
+                        {{ field }}
+                    </td>
+                
+                {% endfor %}
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <caption>Metrics Table</caption>
+    <thead>
+        <tr>
+            {% for name in column_names %}
+                <th {% if loop.index == 1 %} style="width: 80px;" {% endif %}
+                    {% if loop.index == 2 %} style="width: 250px;" {% endif %}
+                >
+                    {{ name }}
+                </th>
+            {% endfor %}
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in rows %}
+            <tr>
+                {% for field in r %}
+                    <!-- setting the second column wide , because it has description -->
+                    <td {% if loop.index == 1 %} style="width: 80px;" {% endif %}
+                        {% if loop.index == 2 %} style="width: 250px;" {% endif %}
+                    >
+                        {{ field }}
+                    </td>
+                
+                {% endfor %}
+                <td>
+                    <a class="editlink" onclick="location.href='{{ url_for('main.update', MetricName=r[0]) }}'" style="cursor: pointer;">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+
+
+
+
+{% endblock %}
